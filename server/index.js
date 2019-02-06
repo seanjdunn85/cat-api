@@ -1,4 +1,6 @@
 /* eslint consistent-return:0 */
+const dotenv = require('dotenv');
+dotenv.config();
 
 const express = require('express');
 const { resolve } = require('path');
@@ -9,11 +11,13 @@ const port = require('./util//port');
 const setup = require('./middlewares/frontendMiddleware');
 
 const app = express();
+const catApi = require('./catApi')
+
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 // 
-app.use('/api', catApi)
+app.use('/api/', catApi)
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
