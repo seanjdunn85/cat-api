@@ -7,7 +7,7 @@
 
 // Needed for redux-saga es6 generator support
 import '@babel/polyfill';
-
+import 'typeface-roboto';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -29,6 +29,9 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'styles/theme.scss';
 
 import configureStore from './configureStore';
+
+
+import { initApplication } from './containers/App/actions';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -59,7 +62,10 @@ const render = () => {
     MOUNT_NODE
   );
 };
-
+/*
+For now putting the initial api call in this
+ */
+store.dispatch(initApplication())
 if (module.hot) {
   // Hot reloadable React components and translation json files
   // modules.hot.accept does not accept dynamic dependencies,
@@ -69,5 +75,5 @@ if (module.hot) {
     render();
   });
 }
-
-render();
+const renderedObj = render();
+console.log('renderedObj',renderedObj)

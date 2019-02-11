@@ -16,6 +16,8 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
+  REQUEST_CAT_GIFS,
+  RECEIVE_CAT_GIFS
 } from './constants';
 
 // The initial state of the App
@@ -30,9 +32,16 @@ const initialState = fromJS({
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_REPOS:
-      return state
+    case REQUEST_CAT_GIFS:
+      state
         .set('loading', true)
+        .set('error', false)
+        .setIn(['userData', 'repositories'], false);
+      return state 
+    case RECEIVE_CAT_GIFS:
+      console.log('received cat gifs')
+      return state
+        .set('cats', action.payload.results)
         .set('error', false)
         .setIn(['userData', 'repositories'], false);
     case LOAD_REPOS_SUCCESS:
