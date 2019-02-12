@@ -114,7 +114,7 @@ class CatNav extends React.Component {
       <div >
         <Button onClick={() => {
           this.props.showAlert();
-        }}>Render error dialog</Button>
+        }} style={{display:'none'}}>Render error dialog</Button>
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
             <Tab label="Cat Images" />
