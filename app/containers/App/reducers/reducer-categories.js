@@ -9,7 +9,7 @@ import {
 function categories(state={}, action){
   switch (action.type) {
     case RECEIVE_CATEGORIES:
-      console.log(RECEIVE_CATEGORIES, action)
+  		console.log(RECEIVE_CATEGORIES, action)
       return Object.assign({}, action.payload);
       break;
     default:

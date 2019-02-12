@@ -20,7 +20,6 @@ import {
   RECEIVE_CAT_GIFS
 } from './constants';
 
-// The initial state of the App
 const initialState = fromJS({
   loading: false,
   error: false,

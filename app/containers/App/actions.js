@@ -36,6 +36,9 @@ import {
   
   RECEIVE_CATEGORIES,
 
+  API_ERROR,
+  API_ERROR_CLOSE
+
 } from './constants';
 
 /**
@@ -200,9 +203,9 @@ export function getCatFavourites(){
       json => {
           console.log('favorites received',json)
           dispatch(receiveCatFavouritesList(json));
-    }).catch((err)=>{
-      dispatch(errorCatFavouritesList(json))
-    })
+    }).catch(
+      err => dispatch(showAlert())
+    )
   }
 }
 
@@ -224,6 +227,8 @@ export function favouriteCatImage(image){
         dispatch(favouriteCatImageSuccess(payload))
         dispatch(getCatFavourites())
       }
+    ).catch(
+      err => dispatch(showAlert())
     )
   }
 }
@@ -258,6 +263,8 @@ export function deleteCatFavourite(favourite_id){
         dispatch(favouriteCatImageDeleted(payload))
         dispatch(getCatFavourites())
       }
+    ).catch(
+      json => dispatch(showAlert())
     )
   }
 }
@@ -332,14 +339,49 @@ export function getRandomCategoriesPage(){
       json => {
         dispatch(receivedCategoriesPage(json))
       }
+    ).catch(
+        err => dispatch(showAlert())
     )
   }
 }
 
+/**
+ * [receivedCategoriesPage description]
+ * @param  {json} json [description]
+ * @return {object} [action object]
+ */
 export function receivedCategoriesPage(json) {
   console.log('got categories page', json)
   return {
     type:RECEIVE_CATEGORIES,
+    payload:{
+      json
+    }
+  }
+}
+
+/**
+ * [showAlert description]
+ * @param  {json} json [description]
+ * @return {object} [action object]
+ */
+export function showAlert(json) {
+  return {
+    type:API_ERROR,
+    payload:{
+      json
+    }
+  }
+}
+
+/**
+ * [closeModal description]
+ * @param  {json} json [description]
+ * @return {object} [action object]
+ */
+export function closeModal(json) {
+  return {
+    type:API_ERROR_CLOSE,
     payload:{
       json
     }

@@ -27,3 +27,6 @@ export const RECEIVE_CAT_PAGE = 'RECEIVE_CAT_PAGE';
 export const ERROR_CAT_PAGE = 'ERROR_CAT_PAGE';
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
+
+export const API_ERROR = 'API_ERROR';
+export const API_ERROR_CLOSE = 'API_ERROR_CLOSE';

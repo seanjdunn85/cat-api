@@ -12,13 +12,15 @@ import CatNav from './CatNav';
 import {
   getCatGifs,
   getCatPage,
-  deleteCatFavourite
+  deleteCatFavourite,
+  showAlert
 } from '../../containers/App/actions';
 
 
 const mapDispatchToProps = (dispatch) => ({
   onChangePage: (page, book) => dispatch(getCatPage(page, book)),
-  deleteCatFavourite: (value)=>{dispatch(deleteCatFavourite(value))}
+  deleteCatFavourite: (value)=>dispatch(deleteCatFavourite(value)),
+  showAlert: (value)=>dispatch(showAlert())
 });
 
 

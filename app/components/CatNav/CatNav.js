@@ -8,13 +8,13 @@ import Tab from '@material-ui/core/Tab';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import GridList from '@material-ui/core/GridList';
+import Button from '@material-ui/core/Button';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Pagination from "material-ui-flat-pagination";
 import CatGrid from "../CatGrid";
 import CatTile from "../CatTile";
-import CatScreen from "../CatScreen";
 import IconButton from '@material-ui/core/IconButton';
 
 function TabContainer(props) {
@@ -113,6 +113,9 @@ class CatNav extends React.Component {
 
     return (
       <div >
+        <Button onClick={() => {
+          this.props.showAlert();
+        }}>Render error dialog</Button>
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
             <Tab label="Cat Images" />

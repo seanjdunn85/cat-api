@@ -9,13 +9,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
-
+import AlertDialogSlide from 'components/AlertDialogSlide';
 import HomePage from 'containers/HomePage/Loadable';
 import CatNav from 'components/CatNav';
 import './style.scss';
 
 const App = () => (
   <div className="app-wrapper">
+  	<AlertDialogSlide/>
     <CatNav/>
     <Switch>
 {/*      <Route exact path="/" component={HomePage} />

@@ -2,6 +2,10 @@ const requestPromise = require('request-promise');
 
 const CAT_API_AUTH_TOKEN = process.env.CAT_API_AUTH_TOKEN;
 
+if(typeof CAT_API_AUTH_TOKEN == 'undefined'){
+	throw new Error('The CAT_API_AUTH_TOKEN environment variable has not been set. Please check your .env file');
+}
+
 const catApi = (req, res) => {
 
 
