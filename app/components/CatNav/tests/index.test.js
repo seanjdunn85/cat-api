@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Header from '../index';
+import CatNav from '../index';
 
-describe('<Header />', () => {
+describe('<CatNav />', () => {
   it('should render a div', () => {
-    const renderedComponent = shallow(<Header />);
+    const renderedComponent = shallow(<CatNav />);
     expect(renderedComponent.length).toEqual(1);
   });
 });

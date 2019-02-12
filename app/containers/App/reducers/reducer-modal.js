@@ -7,7 +7,7 @@ import {
 
 
 
-function categories(state={showError:false, errorHasBeenShown:false}, action){
+function modal(state={showError:false, errorHasBeenShown:false}, action){
   switch (action.type) {
     case API_ERROR:
     	if(state.errorHasBeenShown){
@@ -26,4 +26,4 @@ function categories(state={showError:false, errorHasBeenShown:false}, action){
   }
 }
 
-export default categories;
+export default modal;

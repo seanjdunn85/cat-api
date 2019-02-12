@@ -15,8 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 const mapStateToProps = createStructuredSelector({
-  favourites:makeSelectFavourites()
-});
+  favourites:makeSelectFavourites(
+)});
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 

@@ -2,14 +2,13 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import {createStructuredSelector} from 'reselect';
 import {
-	makeSelectCats,
-	makeSelectPage,
 	makeSelectBooks,
   makeSelectFavourites,
 	makeSelectCategories,
 } from './selectors';
 import CatNav from './CatNav'; 
 import {
+  getRandomCategoriesPage,
   getCatGifs,
   getCatPage,
   deleteCatFavourite,
@@ -20,12 +19,13 @@ import {
 const mapDispatchToProps = (dispatch) => ({
   onChangePage: (page, book) => dispatch(getCatPage(page, book)),
   deleteCatFavourite: (value)=>dispatch(deleteCatFavourite(value)),
-  showAlert: (value)=>dispatch(showAlert())
+  showAlert: (value)=>dispatch(showAlert()),
+  getRandomCategoriesPage: ()=> dispatch(getRandomCategoriesPage())
+  
 });
 
 
 const mapStateToProps = createStructuredSelector({
-  page: makeSelectPage(),
   books: makeSelectBooks(),
   favourites:makeSelectFavourites(),
   categories:makeSelectCategories(),

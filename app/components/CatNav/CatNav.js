@@ -13,7 +13,6 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Pagination from "material-ui-flat-pagination";
-import CatGrid from "../CatGrid";
 import CatTile from "../CatTile";
 import IconButton from '@material-ui/core/IconButton';
 
@@ -189,6 +188,9 @@ class CatNav extends React.Component {
           {
             !categories && <div>loading...</div>
           }
+          <Button onClick={() => {
+          this.props.getRandomCategoriesPage();
+          }}>Get more random cats!</Button>
           <GridList cellHeight={350} className={classes.gridList} cols={3}>
           {!categories && <div>list..</div>}
           {categories && 

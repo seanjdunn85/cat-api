@@ -6,7 +6,7 @@ import CatTile from '../index';
 describe('<CatTile />', () => {
   it('should render the cat tile', () => {
     const catinfo = {id:"6",url:"https://cdn2.thecatapi.com/images/6.png"}
-    const renderedComponent = shallow(<CatTile catinfo={catinfo}/>);
+    const renderedComponent = mount(<CatTile catinfo={catinfo}/>, {cats:[catinfo]});
     expect(
       renderedComponent.contains(
         <GridListTile></GridListTile>

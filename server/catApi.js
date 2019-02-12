@@ -7,10 +7,6 @@ if(typeof CAT_API_AUTH_TOKEN == 'undefined'){
 }
 
 const catApi = (req, res) => {
-
-
-
-
 	/*TODO put some self-contained caching in here that doesn't require another service like redis*/
 	console.log('request body', req.body)
 	
@@ -46,7 +42,6 @@ const catApi = (req, res) => {
 	*/
 
 	if(req.url == '/categories'){
-		console.log('getting categories')
 		/*
 		Declare an array of categories
 		 */
@@ -81,44 +76,28 @@ const catApi = (req, res) => {
 			}
 			Promise.all(categoryRequests).then(
 				(result, body) =>{
-					console.log('LOGGIN CATEGORY RESULTS ', result)
-					console.log(result);
 					const response = result.map(obj => obj[0])
 					res.send(response);
 				}
 			).catch(json => {
-				console.log('')
+				res.status(503);
+				res.send();
 			})
 		}).then(obj =>{
-			console.log('original rp done')
+			console.log('Array for request-promises done')
 		})
 
-
-
-		// Promise.all( [ catApiCallPromise ] )
-		// .then(
-		// 	(result, body) => {
-		// 		console.log(result)
-		// 		res.send(result[0]);
-		// 	})
-		// .catch((err) =>{
-		// 		console.log(err)
-		// 		res.status(err.statusCode);
-		// 		res.send(err.message);
-		// }) 	
 	}else{
 		const catApiCallPromise = requestPromise(httpOptions);
 
 		Promise.all( [ catApiCallPromise ] )
 		.then(
 			(result, body) => {
-				console.log(result)
 				res.send(result[0]);
 			})
 		.catch((err) =>{
-				console.log(err)
-				res.status(err.statusCode);
-				res.send(err.message);
+			res.status(err.statusCode);
+			res.send(err.message);
 		})
 		
 	}
